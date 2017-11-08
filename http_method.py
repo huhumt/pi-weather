@@ -10,16 +10,15 @@ def http_get(url):
     """
 
     fd = request.urlopen(url)
-    return fd.read()
+    return fd.read().decode()
 
-def http_post(url):
+def http_post(url, data_dict):
 
     """
     request website content using http post method
     """
 
-    data_dict = {}
     req =  request.Request(url, data=parse.urlencode(data_dict).encode())
     fd = request.urlopen(req)
 
-    return fd.read().decode()
+    return fd.read()

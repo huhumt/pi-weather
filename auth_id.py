@@ -68,6 +68,10 @@ class auth_method:
 
         # support HTTP GET and HTTP POST here
         resp = http_get(output_url)
+        print(resp)
+        fd = open('./test.log', 'w')
+        fd.write(resp)
+        fd.close()
 
     def auth_server(self):
 
