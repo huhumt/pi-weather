@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import urllib
-
-YAHOO_WEATHER_BASE_URL = "https://weather-ydn-yql.media.yahoo.com/forecastrss?w=2442047&u=c"
+baseurl = "https://query.yahooapis.com/v1/public/yql?"
+yql_query = "select wind from weather.forecast where woeid=2460286"
+yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
+result = urllib2.urlopen(yql_url).read()
+data = json.loads(result)
+print data['query']['results']
