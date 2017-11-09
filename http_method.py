@@ -18,7 +18,7 @@ def http_post(url, data_dict):
     request website content using http post method
     """
 
-    req =  request.Request(url, data=parse.urlencode(data_dict).encode())
+    req = request.Request(url, parse.urlencode(data_dict).encode())
     fd = request.urlopen(req)
 
-    return fd.read().decode('utf-8')
+    return fd.read()

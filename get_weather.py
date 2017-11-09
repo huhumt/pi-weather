@@ -36,7 +36,7 @@ class weather_info:
             config_city = (config_data['city'].upper()).replace(' ', '')
             # get country and appid
             config_country = config_data['country'].upper()
-            self.appid = config_data['appid']
+            self.appid = config_data['weather_appid']
 
             # find city id based on config city
             for data in city_data:
