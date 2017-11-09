@@ -1,6 +1,5 @@
 {
-    "location" : "Shenzhen",
-    "unit" : "Celsius",
-    "client_id" : "dj0yJmk9cDZlNXVRYTlRdkNHJmQ9WVdrOVlrMXVaRlpxTlRBbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1kYQ--",
-    "client_secret" : "5cf185f8c7de466fcbbd97f2d87efcef821085ab"
+    "city" : "Shenzhen",
+    "country" : "CN",
+    "appid" : "0984298aa8d4de5f04f6679284989cf4"
 }

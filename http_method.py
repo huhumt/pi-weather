@@ -10,7 +10,7 @@ def http_get(url):
     """
 
     fd = request.urlopen(url)
-    return fd.read().decode()
+    return fd.read().decode('utf-8')
 
 def http_post(url, data_dict):
 
@@ -21,4 +21,4 @@ def http_post(url, data_dict):
     req =  request.Request(url, data=parse.urlencode(data_dict).encode())
     fd = request.urlopen(req)
 
-    return fd.read()
+    return fd.read().decode('utf-8')
