@@ -10,11 +10,10 @@ def main():
     this is the main entry of the project
     """
 
-    #  forcast = weather_info("./config.json", "./city_list.json")
-    #  weather_response = forcast.request_server()
-    #  weather_parse = forcast.parse_weather(weather_response)
-    #  weather_forcast = forcast.generate_weather_string(weather_parse)
-    weather_forcast = "hello world"
+    forcast = weather_info("./config.json", "./city_list.json")
+    weather_response = forcast.request_server()
+    weather_parse = forcast.parse_weather(weather_response)
+    weather_forcast = forcast.generate_weather_string(weather_parse)
     tts_engine("./config.json", weather_forcast)
 
 if __name__ == "__main__":

@@ -89,7 +89,6 @@ class weather_info:
         weather_output = {
                 'daylight':'',     # moring, noon, afternoon or night
                 'weather_main':'', # sunny, cloudy etc.
-                'rain':'',         # amount of rain
                 'humidity':'',     # humidity
                 'temprature':'',   # maximum temprature
                 'wind_speed':'',   # wind speed
@@ -112,7 +111,6 @@ class weather_info:
                     # update useful weather information
                     weather_output['daylight'] = cur_time
                     weather_output['weather_main'] = (tmp_dict['weather'][0])['main']
-                    weather_output['rain'] = tmp_dict['rain']
                     weather_output['humidity'] = tmp_dict['main']['humidity']
                     weather_output['temprature'] = tmp_dict['main']['temp']
                     weather_output['wind_speed'] = tmp_dict['wind']['speed']
