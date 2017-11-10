@@ -61,6 +61,7 @@ class weather_info:
         '''
         request server for weather information
         '''
+
         # generate weather request url
         base_url = 'http://api.openweathermap.org/data/2.5/forecast'
         url = base_url + '?'
