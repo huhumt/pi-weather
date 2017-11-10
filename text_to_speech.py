@@ -22,10 +22,12 @@ def tts_engine_voicerss(config_file, input_string):
     api_key = config['tts_key']
 
     data_dict = {
-            "key":api_key,
-            "hl":"en-au",
-            "r":-3,
-            "src":input_string
+            "key":api_key,            # api key
+            "hl":"en-us",             # language
+            "r":-3,                   # speech speed, -10~10
+            "c":"WAV",                # codec, can be MP3, WAV, OGG
+            "f":"44khz_16bit_stereo", # sample rate
+            "src":input_string        # text need to be transfered
             }
 
     # support both http get and http post
