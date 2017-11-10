@@ -4,7 +4,7 @@
 from http_method import http_get, http_post
 import json
 
-def tts_engine(config_file, input_string):
+def tts_engine_voicerss(config_file, input_string):
 
     """
     use voicerss.org to do text_to_speech
@@ -39,3 +39,28 @@ def tts_engine(config_file, input_string):
     fd = open("./weather_forecast.mp3", 'wb')
     fd.write(response)
     fd.close()
+
+def tts_engine_ibm(config_file, input_string):
+
+    '''
+    This is text_to_speech engine supported by IBM
+    https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize
+    '''
+
+    base_url = "https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"
+
+    # read username and password from config file
+    fd = open(config_file, 'r')
+    config = json.load(fd)
+    fd.close()
+
+    # get api username and password
+    username = config['tts_username']
+    password = config['tts_password']
+
+    # generate data dictionary
+    data_dict = {
+            "Content-Type":"application/json",
+            "accept":"audio/flac",                # audio format
+            "voice":"en-US_MichaelVoice"
+            }

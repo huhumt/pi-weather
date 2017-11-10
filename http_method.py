@@ -23,3 +23,15 @@ def http_post(url, data_dict, headers):
     fd = request.urlopen(req)
 
     return fd.read()
+
+def http_auth(url, username, password):
+    # Create an OpenerDirector with Basic HTTP Authentication...
+    auth_handler = request.HTTPBasicAuthHandler()
+    auth_handler.add_password(
+            realm='PDQ Application',
+            uri=url,
+            user=username,
+            passwd=password)
+    opener = request.build_opener(auth_handler)
+    # ...and install it globally so it can be used with urlopen.
+    request.install_opener(opener)

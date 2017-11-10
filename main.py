@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from get_weather import weather_info
-from text_to_speech import tts_engine
+from text_to_speech import tts_engine_voicerss
 
 def main():
 
@@ -14,7 +14,7 @@ def main():
     weather_response = forcast.request_server()
     weather_parse = forcast.parse_weather(weather_response)
     weather_forcast = forcast.generate_weather_string(weather_parse)
-    tts_engine("./config.json", weather_forcast)
+    tts_engine_voicerss("./config.json", weather_forcast)
 
 if __name__ == "__main__":
     main()
