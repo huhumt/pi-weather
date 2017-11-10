@@ -24,9 +24,9 @@ def tts_engine_voicerss(config_file, input_string):
     data_dict = {
             "key":api_key,            # api key
             "hl":"en-us",             # language
-            "r":-3,                   # speech speed, -10~10
+            "r":-2,                   # speech speed, -10~10
             "c":"WAV",                # codec, can be MP3, WAV, OGG
-            "f":"44khz_16bit_stereo", # sample rate
+            "f":"44khz_16bit_mono", # sample rate
             "src":input_string        # text need to be transfered
             }
 

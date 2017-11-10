@@ -10,6 +10,8 @@ def http_get(url):
     """
 
     fd = request.urlopen(url)
+    length = fd.getheader('Content-Length')
+
     return fd.read().decode('utf-8')
 
 def http_post(url, data_dict, headers):
@@ -21,6 +23,7 @@ def http_post(url, data_dict, headers):
     data = parse.urlencode(data_dict).encode()
     req = request.Request(url=url, data=data, headers=headers)
     fd = request.urlopen(req)
+    length = fd.getheader('Content-Length')
 
     return fd.read()
 
