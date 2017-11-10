@@ -26,8 +26,8 @@ class weather_info:
         self.appid = ''
 
         # open file descriptor
-        fd1 = open(config_file, 'r')
-        fd2 = open(city_id, 'r')
+        fd1 = open(config_file, 'r', encoding="utf-8")
+        fd2 = open(city_id, 'r', encoding="utf-8")
         try:
             # load file as json format
             config_data = json.load(fd1)
