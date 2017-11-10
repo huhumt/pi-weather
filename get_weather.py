@@ -50,8 +50,8 @@ class weather_info:
                     self.city = data['id']
                     break
                 # use Newport, Melbourne, Austrilia default
-            else:
-                self.city = '2155411'
+                else:
+                    self.city = '2155411'
         finally:
             fd1.close()
             fd2.close()
