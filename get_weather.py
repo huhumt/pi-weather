@@ -82,6 +82,7 @@ class weather_info:
         '''
 
         weather_data = json.loads(response)
+        daylight_keys = ['morning', 'noon', 'afternoon', 'night']
         daylight = {
                 'morning':'09:00:00',      # in the lovely morning
                 'noon':'12:00:00',         # lunch time
@@ -92,7 +93,7 @@ class weather_info:
                 'daylight':'',     # moring, noon, afternoon or night
                 'weather_main':'', # sunny, cloudy etc.
                 'humidity':'',     # humidity
-                'temperature':'',   # maximum temperature
+                'temperature':'',  # temperature
                 'wind_speed':'',   # wind speed
                 'wind_deg':''      # wind direction
                 }
@@ -104,7 +105,7 @@ class weather_info:
         weather_list = []
 
         # report moring, noon, afternoon and night
-        for cur_time in daylight:
+        for cur_time in daylight_keys:
             cur_date_time = cur_date + ' ' + daylight[cur_time]
             # search for useful information
             for tmp_dict in weather_data['list']:
