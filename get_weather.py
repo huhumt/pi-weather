@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from http_method import http_get, http_post
-from get_date_time import get_date, get_time
+from get_date_time import get_date, get_time, get_weekday
+from random import choice
 import json
 
 class weather_info:
@@ -129,30 +130,48 @@ class weather_info:
         generate a weather string for tts engine
         '''
 
-        output_string = "Today is " + get_date()
-        output_string += (", and now it's " + get_time())
-        output_string += (". Play weather forcast in " + self.city + ".")
+        good_weather_hello = [
+                "Wish you have a nice day ",
+                "Do you want to date me? ",
+                "Maybe we can arrange some picnic. ",
+                "Never miss the sunshine. ",
+                "I love you, so much..."
+                ]
+
+        bad_weather_list = ["Rain", "Snow", "Extreme"]
+        bad_weather_hello = [
+                "Don't forget to take a umbrella, bigger one is better. ",
+                "Walk slowly, for there's too much snails on the road. ",
+                "Keep smile while you are walking, then you'll get a unwet mood. ",
+                "Have a nice meal may do some help, would you like some tea? I mean, leamon tea. ",
+                "di di da, di di da, di di da da da. I like play with water, Aha. "
+                ]
+
+        output_string = "Today is " + get_weekday() + ", " + get_date() + ". "
+        output_string += ("And now it's " + get_time() + ". ")
+        output_string += ("Play weather forcast in " + self.city + ". ")
         play_once_flag = False
         # generate morning, noon, afternoon, night weather report
         for tmp_dict in weather_list:
-            if tmp_dict['daylight'] == "night":
-                output_string += " At night"
+            if tmp_dict['daylight'] == "night" or tmp_dict['daylight'] == 'noon':
+                output_string += "At "
             else:
-                output_string += (" In the " + tmp_dict['daylight'])
-            output_string += (", it's " + tmp_dict['weather_main'])
-            output_string += (", the temperature is " + str(tmp_dict['temperature']) + " degree")
+                output_string += "In the "
+            output_string += (tmp_dict['daylight'] + ", ")
+            output_string += ("it's " + tmp_dict['weather_main'] + ", ")
+            output_string += ("the temperature is " + str(tmp_dict['temperature']) + " celsius degree. ")
 
             # add some tips
             if not play_once_flag:
-                if tmp_dict['weather_main'] == "Rain":
-                    output_string += ". Don't forget to take a umbrella"
+                if tmp_dict['weather_main'] in bad_weather_list:
+                    output_string += choice(bad_weather_hello)
                     play_once_flag = True
                 else:
-                    output_string += ". Wish you have a nice day"
+                    output_string += choice(good_weather_hello)
                     play_once_flag = True
 
-            output_string += (". The wind speed is " + str(tmp_dict['wind_speed']) + " meter per second")
-            output_string += (", the humidity is " + str(tmp_dict['humidity']) + " percent.")
+            output_string += ("The wind speed is " + str(tmp_dict['wind_speed']) + " meter per second, ")
+            output_string += ("the humidity is " + str(tmp_dict['humidity']) + " percent. ")
 
         # finish weather forecast, now listen to radio
         output_string += ("Now let's enjoy some radio.")

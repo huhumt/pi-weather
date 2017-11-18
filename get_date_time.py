@@ -13,32 +13,11 @@ def get_time():
     get current time
     '''
 
-    # get current date and time
-    cur_datetime = datetime.now()
+    today = datetime.today()
+    hour = str(today.strftime("%H"))
+    minute = str(today.strftime("%M"))
 
-    # get hour, minute, second
-    hour = cur_datetime.hour
-    if hour < 10:
-        hour = '0' + str(hour)
-    else:
-        hour = str(hour)
-
-    minute = cur_datetime.minute
-    if minute < 10:
-        minute = '0' + str(minute)
-    else:
-        minute = str(minute)
-
-    second = cur_datetime.second
-    if second < 10:
-        second = '0' + str(second)
-    else:
-        second = str(second)
-
-    # format current time
-    cur_time = hour + ':' + minute + ':' + second
-
-    return cur_time
+    return hour + ":" + minute
 
 def get_date():
 
@@ -49,3 +28,11 @@ def get_date():
     cur_date = date.today()
 
     return str(cur_date)
+
+def get_weekday():
+
+    '''
+    get weekday number
+    '''
+
+    return str(datetime.today().strftime("%A"))
